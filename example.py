@@ -8,7 +8,15 @@ import apache_beam.transforms.window as window
 '''Normalize pubsub string to json object'''
 # Lines look like this:
 def parse_pubsub(line):
-    schema_cols = ["ride_id", "point_idx", "latitude", "longitude", "timestamp", "meter_reading", "meter_increment", "ride_status", "passenger_count"]
+    schema_cols = ["ride_id",
+                   "point_idx",
+                   "latitude",
+                   "longitude",
+                   "timestamp",
+                   "meter_reading",
+                   "meter_increment",
+                   "ride_status",
+                   "passenger_count"]
     import json
     record = json.loads(line)
     return (record[x] for x in schema_cols)
