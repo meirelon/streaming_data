@@ -19,7 +19,7 @@ def parse_pubsub(line):
                    "passenger_count"]
     import json
     record = json.loads(line)
-    return (record[x] for x in schema_cols)
+    return [(record['{}'.format(x)]) for x in schema_cols]
     # return (record['vendor_id']), (record['pickup_datetime']), (record['dropoff_datetime'])
 
 def run(argv=None):
@@ -40,15 +40,15 @@ def run(argv=None):
     # Read the pubsub topic into a PCollection.
     lines = ( p | beam.io.ReadStringsFromPubSub(known_args.input_topic)
                 | beam.Map(parse_pubsub)
-                | beam.Map(lambda (ride_id,
-                                   point_idx,
-                                   latitude,
-                                   longitude,
-                                   timestamp,
-                                   meter_reading,
-                                   meter_increment,
-                                   ride_status,
-                                   passenger_count): {'ride_id': ride_id_bq,
+                | beam.Map(lambda (ride_id_bq,
+                                   point_idx_bq,
+                                   latitude_bq,
+                                   longitude_bq,
+                                   timestamp_bq,
+                                   meter_reading_bq,
+                                   meter_increment_bq,
+                                   ride_status_bq,
+                                   passenger_count_bq): {'ride_id': ride_id_bq,
                                                 'point_idx': point_idx_bq,
                                                 'latitude': latitude_bq,
                                                 'longitude': longitude_bq,
@@ -56,7 +56,7 @@ def run(argv=None):
                                                 'meter_reading': meter_reading_bq,
                                                 'meter_increment': meter_increment_bq,
                                                 'ride_status': ride_status_bq,
-                                                'passenger_count': passenger_count})
+                                                'passenger_count': passenger_count_bq})
                 | beam.io.WriteToBigQuery(
                     known_args.output_table,
                     schema='''
