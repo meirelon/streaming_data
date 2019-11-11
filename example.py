@@ -20,7 +20,6 @@ def parse_pubsub(line):
     import json
     record = json.loads(line)
     return [(record['{}'.format(x)]) for x in schema_cols]
-    # return (record['vendor_id']), (record['pickup_datetime']), (record['dropoff_datetime'])
 
 def run(argv=None):
   """Build and run the pipeline."""
