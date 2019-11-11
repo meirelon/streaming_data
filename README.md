@@ -46,5 +46,5 @@ There is also further information about subscribing to the NYC Taxi Rides pubsub
 Please read about how pubsub works [here](https://cloud.google.com/pubsub/docs/overview)
 
 
-# Contribute
+## Contribute
 I am happy to review [PRs](https://help.github.com/articles/about-pull-requests/), or if you liked this example, I also gladly accept [Crypto Currency](https://commerce.coinbase.com/checkout/1efcc118-420e-4512-b1f1-713b20c0f09e)
