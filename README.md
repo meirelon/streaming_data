@@ -1,4 +1,4 @@
-# Welcome to the Streaming Data 101!
+# Welcome to Streaming Data 101!
 This is meant to be a recipe for running streaming pipelines in Python.
 
 ## What's going on?
