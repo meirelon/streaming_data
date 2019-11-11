@@ -38,7 +38,12 @@ For this example, we are going to use the NYC Taxi Rides pubsub topic provided b
 Now we deploy!
 The command is going to look like the following:
 ```
-python -m example --runner DataflowRunner --project [PROJECT ID] --temp_location gs://[PROJECT ID]-streaming/tmp/ --input_topic "projects/pubsub-public-data/topics/taxirides-realtime" --output_table "[PROJECT ID]:[DATASET NAME].[TABLE NAME]" --streaming
+python -m example --runner DataflowRunner \
+                  --project [PROJECT ID] \
+                  --temp_location gs://[PROJECT ID]-streaming/tmp/ \
+                  --input_topic "projects/pubsub-public-data/topics/taxirides-realtime" \
+                  --output_table "[PROJECT ID]:[DATASET NAME].[TABLE NAME]" \
+                  --streaming
 ```
 
 ## Resources
