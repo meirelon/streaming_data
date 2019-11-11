@@ -6,11 +6,11 @@ Subscribe to a pubsub topic, extract data and store in a BigQuery Table.
 
 ## What you'll need
 ```
-- Python 2.7
+- Python 3.7
 - Apache Beam
 - GCP Project
 - Dataflow and PubSub APIs Enabled
-- Access to Bigquery
+- Access to BigQuery
 ```
 
 ## Example
@@ -20,10 +20,10 @@ git clone https://github.com/meirelon/streaming_data.git
 cd streaming_data
 ```
 
-Next, create a virtual environment with Python27 and install the apache beam dependency.
+Next, create a virtual environment with Python37 and install the apache beam dependency.
 ```
-virtualenv py27 --python=/usr/bin/pyton2.7
-source activate py27
+virtualenv py37
+source activate py37
 pip install -r requirements.txt
 ```
 
