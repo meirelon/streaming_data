@@ -20,14 +20,14 @@ git clone https://github.com/meirelon/streaming_data.git
 cd streaming_data
 ```
 
-Next, create a virtual environment with Python27 and install the apache beam dependency
+Next, create a virtual environment with Python27 and install the apache beam dependency.
 ```
 virtualenv py27 --python=/usr/bin/pyton2.7
 source activate py27
 pip install -r requirements.txt
 ```
 
-Then create a new bucket for streaming logs
+Then create a new bucket for streaming logs.
 ```
 gsutil mb gs://[PROJECT ID]-streaming
 ```
@@ -42,9 +42,9 @@ python -m example --runner DataflowRunner --project [PROJECT ID] --temp_location
 ```
 
 ## Resources
-There is also further information about subscribing to the NYC Taxi Rides pubsub [here](https://github.com/googlecodelabs/cloud-dataflow-nyc-taxi-tycoon)
-Please read about how pubsub works [here](https://cloud.google.com/pubsub/docs/overview)
+More information about subscribing to the NYC Taxi Rides pubsub [here](https://github.com/googlecodelabs/cloud-dataflow-nyc-taxi-tycoon).
+Please read about how pubsub works [here](https://cloud.google.com/pubsub/docs/overview).
 
 
 ## Contribute
-I am happy to review [PRs](https://help.github.com/articles/about-pull-requests/), or if you liked this example, I also gladly accept [Crypto Currency](https://commerce.coinbase.com/checkout/1efcc118-420e-4512-b1f1-713b20c0f09e)
+I am happy to review [PRs](https://help.github.com/articles/about-pull-requests/), or if you liked this example, I also gladly accept [Crypto Currency](https://commerce.coinbase.com/checkout/1efcc118-420e-4512-b1f1-713b20c0f09e)!
