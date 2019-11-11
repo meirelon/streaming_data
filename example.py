@@ -3,7 +3,6 @@ from __future__ import absolute_import
 import logging
 import argparse
 import apache_beam as beam
-import apache_beam.transforms.window as window
 
 '''Normalize pubsub string to json object'''
 # Lines look like this:
@@ -19,7 +18,8 @@ def parse_pubsub(line):
                    "passenger_count"]
     import json
     record = json.loads(line)
-    return [(record['{}'.format(x)]) for x in schema_cols]
+    return {s: record['{}'.format(s)] for s in schema_cols}
+    # return (record['vendor_id']), (record['pickup_datetime']), (record['dropoff_datetime'])
 
 def run(argv=None):
   """Build and run the pipeline."""
@@ -39,23 +39,6 @@ def run(argv=None):
     # Read the pubsub topic into a PCollection.
     lines = ( p | beam.io.ReadStringsFromPubSub(known_args.input_topic)
                 | beam.Map(parse_pubsub)
-                | beam.Map(lambda (ride_id_bq,
-                                   point_idx_bq,
-                                   latitude_bq,
-                                   longitude_bq,
-                                   timestamp_bq,
-                                   meter_reading_bq,
-                                   meter_increment_bq,
-                                   ride_status_bq,
-                                   passenger_count_bq): {'ride_id': ride_id_bq,
-                                                'point_idx': point_idx_bq,
-                                                'latitude': latitude_bq,
-                                                'longitude': longitude_bq,
-                                                'timestamp': timestamp_bq,
-                                                'meter_reading': meter_reading_bq,
-                                                'meter_increment': meter_increment_bq,
-                                                'ride_status': ride_status_bq,
-                                                'passenger_count': passenger_count_bq})
                 | beam.io.WriteToBigQuery(
                     known_args.output_table,
                     schema='''
